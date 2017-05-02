@@ -39,7 +39,7 @@ double europeanPutOption(
     return strikePrice * exp(-1 * rate * expireTime) * normalCFD(-d2) - stockPrice * normalCFD(-d1);
 }
 
-double estimateVolatility(
+double OptionFunction::estimateVolatility(
         double stockPrice,
         double strikePrice,
         double rate,

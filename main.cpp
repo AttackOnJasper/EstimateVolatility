@@ -34,6 +34,7 @@ int main(int argc, char* argv[]) {
         cout << inputString << (i == 0? "\t\t" : "\t");
     }
     cout << "callBidImpV\tcallAskImpV\tputBidImpV\tputAskImpV" << endl;
+    OptionFunction optionFunction;
     while (inFile >> inputString) {
         cout << inputString << "\t";
         for (int i = 0; i < colSize; i++) {
@@ -41,10 +42,10 @@ int main(int argc, char* argv[]) {
             data[i] = input;
             cout << input << "\t";
         }
-        cout << estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[3], &europeanCallOption) << "\t";
-        cout << estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[4], &europeanCallOption) << "\t";
-        cout << estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[6], &europeanPutOption) << "\t";
-        cout << estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[7], &europeanPutOption) << "\t";
+        cout << optionFunction.estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[3], europeanCallOption) << "\t";
+        cout << optionFunction.estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[4], europeanCallOption) << "\t";
+        cout << optionFunction.estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[6], europeanPutOption) << "\t";
+        cout << optionFunction.estimateVolatility(data[1], data[5], 0, data[0] / 365, 0, data[7], europeanPutOption) << "\t";
         cout << endl;
     }
     return 0;
